@@ -1,0 +1,22 @@
+<head>
+    {{>header}}
+</head>
+
+<body>
+    <form action="/newEntry">
+        <input type="submit" value="Add new entry">
+    </form>
+
+    {{#entries}}
+        <div>
+          
+            <div>
+                <h3> Brand: {{brandField}} </h3>
+                <h3> Type: {{typeField}} </h3>
+                <h3> Colour: {{colourField}} </h3>
+               
+            <div>
+        </div>
+    {{/entries}}
+
+</body>
