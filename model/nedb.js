@@ -1,15 +1,8 @@
 
 const Datastore = require('nedb');
 
-var nedb = new Datastore({
-    filename: 'db.db',
-    autoload: true
-  });
-
-
-
-//Main constructor
-  class DAO {
+//Table for products
+class DAO {
     constructor(dbFilePath) {
         //run database as a file
         if (dbFilePath) {
@@ -21,57 +14,51 @@ var nedb = new Datastore({
         }
     }
 
-    //Add the entries to the database
+    //Add the entries to the product table
     init() {
         this.db.insert({
-            	
-                brand: 'Nike',
-            	type: 'T-Shirt', 
-                colour: 'White'
+            brandField: 'Nike',
+            typeField: 'T-Shirt', 
+            colourField: 'White'
         });
         console.log('new entry inserted');
-}
+    }
 
-//Returns all entries from the database
-all() {
-    return new Promise((resolve, reject) => {
-        this.db.find({}, function (err, entries) {
-            if (err) {
-                reject(err);
-                console.log('rejected');
-            } else {
-                resolve(entries);
-                console.log('resolved');
+    //Returns all entries from the product table
+    all() {
+        return new Promise((resolve, reject) => {
+            this.db.find({}, function (err, entries) {
+                if (err) {
+                    reject(err);
+                    console.log('rejected');
+                } else {
+                    resolve(entries);
+                    console.log('resolved');
+                }
+            });
+        })
+    }
+
+    //Adds a new entry to the product table if given correct variables
+    add(brand, type, colour){
+        var entry = {
+            brandField : brand,
+            typeField : type,
+            colourField : colour
+        };
+
+        this.db.insert(entry, function(err, doc){
+            if (err){
+                console.log("Can't insert product: ", brandField + " " + typeField);
             }
         });
-    })
+    }
+
+    //Removes all entries from the product table, only used during development.
+    deleteAllEntries(){
+        this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+    }
 }
-
-//Adds a new entry to the database if given correct variables
-add(brand, type, colour){
-    var entry = {
-        brandField : brand,
-        typeField : type,
-        colourField : colour,
-        
-    };
-    this.db.insert(entry, function(err, doc){
-        if (err){
-            console.log("Can't insert coursework: ", courseworkNameField);
-        }
-    });
-}
-
-//Removes all entries from the database, only used during development.
-deleteAllEntries(){
-    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
-}
-  }
-
-
-
-
-
 
 //Module exports
-module.exports = DAO;
+    module.exports = DAO;
