@@ -1,0 +1,56 @@
+<h1>New Item Page</h1>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      
+      <h1 class="text-center mb-3">  Enter item details</h1>
+      <% include ./partials/messages %>
+      <form action="/items/addNewItem" method="POST">
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input
+            type="brand"
+            id="brand"
+            name="brand"
+            class="form-control"
+            placeholder="Enter brand"
+          />
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select class="browser-default custom-select">
+            <option selected>Open this select menu</option>
+            <option value="Hat">Hat</option>
+            <option value="Scarf">Scarf</option>
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Shirt">Shirt</option>
+            <option value="Trousers">Trousers</option>
+            <option value="Dress">Dress</option>
+            <option value="Shorts">Shorts</option>
+            <option value="Skirt">Skirt</option>
+            <option value="Shoes">Shoes</option>
+          </select>
+          
+          <div class="form-group">
+            <label for="Colour">Colour</label>
+            <input
+              type="brand"
+              id="brand"
+              name="brand"
+              class="form-control"
+              placeholder="Enter colour"
+            />
+          </div>
+
+
+
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Add</button>
+        <a href="javascript:history.back()" class="btn btn-danger btn-block">Go Back</a>
+      </form>
+      <p class="text-success mt-4">
+       
+      </p>
+    </div>
+  </div>
+</div>
