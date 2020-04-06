@@ -16,6 +16,10 @@ const itemSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  ownerID: {
+    type: String,
+    require = true
   }
 });
 
