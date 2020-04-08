@@ -2,20 +2,18 @@
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
-      
 
-      <h1 class="text-center mb-3">  Enter item details</h1>
-      <% include ./partials/messages %>
+
+      <h1 class="text-center mb-3"> Enter item details
+
+        <% include ./partials/messages %>
+
+      </h1>
+      
       <form action="/items/insert-item" method="POST">
         <div class="form-group">
           <label for="brand">Brand</label>
-          <input
-            type="brand"
-            id="brand"
-            name="brand"
-            class="form-control"
-            placeholder="Enter brand"
-          />
+          <input type="brand" id="brand" name="brand" class="form-control" placeholder="Enter brand" />
         </div>
 
 
@@ -36,18 +34,12 @@
             <option value="Skirt">Skirt</option>
             <option value="Shoes">Shoes</option>
           </select>
-          
+
 
 
           <div class="form-group">
             <label for="Colour">Colour</label>
-            <input
-              type="colour"
-              id="colour"
-              name="colour"
-              class="form-control"
-              placeholder="Enter colour"
-            />
+            <input type="colour" id="colour" name="colour" class="form-control" placeholder="Enter colour" />
           </div>
 
 
@@ -57,7 +49,7 @@
         <a href="javascript:history.back()" class="btn btn-danger btn-block">Go Back</a>
       </form>
       <p class="text-success mt-4">
-       
+
       </p>
     </div>
   </div>

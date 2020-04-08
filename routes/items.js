@@ -80,7 +80,7 @@ router.get('/get-items', function (req, res, next) {
 
 
 // Add new item to the database
-router.post('/insert-item', function (req, res, next) {
+router.post('/insert-item', function (req, res) {
 
 
     var item = {
