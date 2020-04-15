@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-
 // DB Config
 const passport = require('passport');
 
@@ -15,11 +14,8 @@ const {
     forwardAuthenticated
 } = require('../config/auth');
 
-
 //Render Add new item page
 router.get('/addNewItem', ensureAuthenticated, (req, res) => res.render('addNewItem'));
-
-
 
 // Get added item from the database
 router.get('/get-items2', function (req, res, next) {
@@ -34,20 +30,12 @@ router.get('/get-items2', function (req, res, next) {
             resultArray.push(doc);
         }, function () {
 
-
             console.log(resultArray);
-            console.log("Printed Resutls")
+            console.log("Printed Results")
 
         });
-
-
-
-
     });
-
 });
-
-
 
 // Get itmes assosiated with the logged in account
 router.get('/get-items', function (req, res, next) {
@@ -69,19 +57,13 @@ router.get('/get-items', function (req, res, next) {
             console.log("Printed Resutls")
 
         });
-
-
-
-
     });
-
 });
 
 
 
 // Add new item to the database
 router.post('/insert-item', function (req, res) {
-
 
     var item = {
         brand: req.body.brand,
@@ -101,8 +83,6 @@ router.post('/insert-item', function (req, res) {
 
         mongoose.connect(db, function (err, db) {
 
-
-
             assert.equal(null, err);
 
             db.collection('items').insertOne(item, function (err, result) {
@@ -112,27 +92,13 @@ router.post('/insert-item', function (req, res) {
                 req.flash('success_msg', 'Item added successfully');
                 res.redirect("/dashboard")
             });
-
-
-        })
-
-
-
+        });
     }
-
-
-
-
 });
 
 
 // Delete the item from the database
 router.get('/delete-item', function (req, res, next) {
-
-
 });
-
-
-
 
 module.exports = router;
