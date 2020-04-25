@@ -60,39 +60,40 @@
 
             <%outfitList.forEach(function(outfit, index){%>
                 <div>
-                <button class="btn btn-info" data-toggle="collapse" data-target="#div<%= index %>"><%= outfit.outfitName%></button>
+                <button class="btn btn-primary btn-lg btn-block " data-toggle="collapse" data-target="#div<%= index %>"><%= outfit.outfitName%></button>
+                <br>
                     <div class="collapse" id="div<%= index %>">
-                        <div class="card card-body">
+                      <ul class="list-group">
                             <%itemList.forEach(function(item, index){%>
                                 <%if(item._id == outfit.hatID){ %>
-                                    <p>Hat: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Hat: <%= item.brand %>, <%= item.colour %>  </li>
                                 <%}%>
                                 <%if(item._id == outfit.scarfID){ %>
-                                    <p>Scarf: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Scarf: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.tshirtID){ %>
-                                    <p>T-shirt: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">T-shirt: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.shirtID){ %>
-                                    <p>Shirt: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Shirt: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.trousersID){ %>
-                                    <p>Trousers: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Trousers: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.dressID){ %>
-                                    <p>Dress: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Dress: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.shortsID){ %>
-                                    <p>Shorts: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Shorts: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.skirtID){ %>
-                                    <p>Skirt: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Skirt: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                                 <%if(item._id == outfit.shoesID){ %>
-                                    <p>Shoes: <%= item.brand %>, <%= item.colour %></p>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">Shoes: <%= item.brand %>, <%= item.colour %></li>
                                 <%}%>
                             <%})%>
-                        </div>
+                          </ul>
                     </div>
                 </div>
             <%})%>
