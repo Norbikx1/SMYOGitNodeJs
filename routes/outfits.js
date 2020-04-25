@@ -57,6 +57,7 @@ router.get('/createOutfit', ensureAuthenticated, function(req, res){
             //console.log(items);
             //console.log("Printed results");
             res.render('createOutfit', {
+                name: req.user.name,
                 hatList : hats, 
                 scarfList : scarfs, 
                 tshirtList : tshirts, 
@@ -214,7 +215,7 @@ router.get('/seeOutfits', ensureAuthenticated ,function(req, res){
                 items.push(item);
             },function(){
                 //console.log(outfits);
-                res.render('seeOutfits', {outfitList : outfits, itemList : items});
+                res.render('seeOutfits', { name: req.user.name, outfitList : outfits, itemList : items});
             });
         });
     });

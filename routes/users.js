@@ -3,6 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
+
+
+
+
 // Load User model
 const User = require('../models/User');
 const {
@@ -102,6 +106,8 @@ router.post('/login', (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 });
+
+
 
 // Logout
 router.get('/logout', (req, res) => {

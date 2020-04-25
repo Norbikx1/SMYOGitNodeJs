@@ -14,8 +14,16 @@ const {
     forwardAuthenticated
 } = require('../config/auth');
 
-//Render Add new item page
-router.get('/addNewItem', ensureAuthenticated, (req, res) => res.render('addNewItem'));
+
+
+
+
+router.get('/addNewItem',ensureAuthenticated, function (req, res, next) {
+
+  
+    
+    res.render('addNewItem', {name: req.user.name})
+});
 
 // Get added item from the database
 router.get('/get-items2', function (req, res, next) {
