@@ -15,6 +15,10 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
 
+//Connect database
+const db = require('../config/keys').mongoURI;
+const assert = require('assert');
+
 
 
 

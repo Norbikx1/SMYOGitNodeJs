@@ -70,7 +70,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
           res.render('dashboard', {
             photos: files, 
             posts: posts,
-            name : req.user.name
+            name : req.user.name,
+            userID: req.user.id
           });
         } 
 
@@ -92,7 +93,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
           res.render('dashboard', {
             photos: files, 
             posts: posts,
-            name : req.user.name
+            name : req.user.name,
+            userID: req.user.id
           });
         }
       });

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const objectId = require('mongodb').ObjectID;
 
 // DB Config
 const passport = require('passport');
@@ -64,6 +65,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         description : req.body.description,
         likes : 0,
         ownerID : req.user.id,
+        ownerName : req.user.name,
         uploadDate : currentDate
     }
 
@@ -78,4 +80,63 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     });
 
 });
+
+router.post('/deletePost/', ensureAuthenticated, function(req, res, next) {
+
+
+    
+    var ownerId = req.body.ownerID
+    var id = req.body.id
+    var imageID = req.body.imageId
+
+
+    if (ownerId == req.user.id)
+
+    {
+
+
+        mongoose.connect(db, function(err, db) {
+            assert.equal(null, err);
+            db.collection('posts').deleteOne({"_id": objectId(id)}, function(err, result) {
+              assert.equal(null, err);
+              console.log(id)
+              console.log('Item deleted');
+              db.collection('uploads.files').deleteOne({"imageID": imageID}, function(err, result) {
+                assert.equal(null, err);
+                console.log(imageID)
+                console.log('Item deleted');
+                
+              });
+        
+            });
+            
+          });
+
+    }
+
+    if (ownerId != req.user.id )
+    {
+        console.log("Wrong User")
+
+    }
+  
+    
+  });
+
+
+router.post('/deletePost', ensureAuthenticated, function(req, res){
+
+   
+
+
+});
+
+router.post('/addLike', ensureAuthenticated, function(req, res){
+
+   
+
+
+});
+
+
 module.exports = router;

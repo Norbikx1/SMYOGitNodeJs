@@ -51,19 +51,56 @@
     <input type="submit" class="btn btn-success btn-block" value="New Post">
   </form>
   
+  
+  
     <% posts.forEach(function(post,index){%>
-      <div class="card card-body">  
 
-        <%if(photos[index]._id == post.imageID){%>
-          <div class="text-center">
-            <img src="image/<%=photos[index].filename%>" alt="" class="rounded" width="50%" >
-          </div>
-          <p><%=post.description%></p>
-        <%}%>
 
+
+
+      <div class="text-center">
+      <div class="card mb-3">
+        <h3 class="card-header"><%=post.description%> <%= post._id %></h3>
+        <div class="card-body">
+          <h5 class="card-title">Added by <%=post.ownerName%></h5>
+          <img src="image/<%=photos[index].filename%>" alt="" class="rounded" width="80%" >
+        </div>
+        
+        
+       
+        <div class="card-body">
+          <a href="/posts/addLike" class="card-link">Like</a>
+          <a href="#" class="card-link">Share</a>
+
+
+          <form action="/posts/deletePost/" method="POST">
+            <input type="hidden" id="id" name="id" value = "<%= post._id %>">
+            <input type="hidden" id="imageId" name="imageId" value = "<%= post.imageID %>">
+            <input type="hidden" id="ownerID" name="ownerID" value = "<%= post.ownerID %>">
+
+
+
+            <% if(post.ownerID == userID ) {%>
+            <input type="submit" class="btn btn-danger btn-block" value="Delete Post">
+            <%}%>
+
+            <% if(post.ownerID != userID ) {%>
+              <input type="hidden" class="btn btn-success btn-block" value="Delete Post">
+              <%}%>
+          </form>
+            
+          
+        </div>
+        <div class="card-footer text-muted">
+          <%=post.uploadDate.toString().slice(0,16)%>
+        </div>
       </div>
+    </div>
+      
     <%})%>
 
-  
-  
+
+
+
+
         
