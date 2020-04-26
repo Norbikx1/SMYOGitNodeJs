@@ -92,7 +92,29 @@
             <input type="colour" id="colour" name="colour" class="form-control" placeholder="Enter colour" />
           </div>
 
-
+          
+                <% if(files){ %>
+                  <% files.forEach(function(file) { %>
+                    <div class="card card-body mb-3">
+                      <% if(file.isImage) { %>
+                        <img src="image/<%= file.filename %>" alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                              <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                                <button class="btn btn-danger btn-block mt-4">Delete</button>
+                              </form>
+                    </div>
+                    <% }) %>
+                      <% } else { %>
+                        <p>No files to show</p>
+                        <% } %>
+              </div>
+            </div>
+          </div>
+         
+    
+    
 
         </div>
         <button type="submit" class="btn btn-success btn-block">Add</button>
