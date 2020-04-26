@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+
+
+
+
+
 // Load User model
 const User = require('../models/User');
 const {
@@ -14,15 +19,9 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
-
-
-
-
-
-
 // Register
 router.post('/register', (req, res) => {
-  const {
+    const {
     name,
     email,
     password,
@@ -107,7 +106,6 @@ router.post('/login', (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 });
-
 
 
 
