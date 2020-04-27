@@ -128,7 +128,7 @@ router.post('/deletePost/', ensureAuthenticated, function(req, res, next) {
                 console.log('Item deleted');
                 
               });
-        
+            res.redirect("/dashboard");
             });
             
           });
