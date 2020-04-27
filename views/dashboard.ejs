@@ -54,13 +54,10 @@
   
   
     <% posts.forEach(function(post,index){%>
-
-
-
-
+      
       <div class="text-center">
       <div class="card mb-3">
-        <h3 class="card-header"><%=post.description%> <%= post._id %></h3>
+        <h5 class="card-header"><%=post.description%></h5>
         <div class="card-body">
           <h5 class="card-title">Added by <%=post.ownerName%></h5>
           <img src="image/<%=photos[index].filename%>" alt="" class="rounded" width="80%" >
@@ -77,8 +74,6 @@
             <input type="hidden" id="id" name="id" value = "<%= post._id %>">
             <input type="hidden" id="imageId" name="imageId" value = "<%= post.imageID %>">
             <input type="hidden" id="ownerID" name="ownerID" value = "<%= post.ownerID %>">
-
-
 
             <% if(post.ownerID == userID ) {%>
             <input type="submit" class="btn btn-danger btn-block" value="Delete Post">

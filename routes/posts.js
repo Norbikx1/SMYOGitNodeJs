@@ -46,9 +46,23 @@ const storage = new GridFsStorage({
 const upload = multer({storage});
 
 router.get('/newPost', ensureAuthenticated, function(req, res){
-    res.render('newPost', {
-        name : req.user.name,
-    });
+
+    var outfits = [];
+
+    mongoose.connect(db,function(err, db){
+        assert.equal(null,err);
+        var cursor = db.collection('outfits').find({ownerID : req.user.id});
+
+        cursor.forEach(function(doc,err){
+            assert.equal(null, err);
+            outfits.push(doc);
+        },function(){
+            res.render('newPost', {
+                name : req.user.name,
+                outfits : outfits,
+            });
+        });
+    });   
 });
 
 router.post('/upload', upload.single('file'), async (req, res) => {
@@ -60,13 +74,20 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     var currentDate = new Date();
     currentDate.toLocaleDateString();
 
+    var outfit;
+
+    if(req.body.outfitPick != "None"){outfit = req.body.outfitPick}
+    else{outfit="none"}
+    console.log(outfit + "\n" + outfit._id);
+
     var post = {
         imageID : lastFile[0]._id.toString(),
         description : req.body.description,
         likes : 0,
         ownerID : req.user.id,
         ownerName : req.user.name,
-        uploadDate : currentDate
+        uploadDate : currentDate,
+        outfitID : outfit._id,
     }
 
     mongoose.connect(db, function(err, db){

@@ -20,6 +20,14 @@ const PostSchema = new mongoose.Schema({
   uploadDate: {
       type: Date,
       required: true
+  },
+  outfitID: {
+    type: String,
+    required: false
+  },
+  ownerName: {
+    type: String,
+    required: true
   }
 });
 

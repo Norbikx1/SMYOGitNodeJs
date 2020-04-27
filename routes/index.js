@@ -62,6 +62,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       posts.push(doc);  
+      
     }, function(){
       
       gfs.files.find().sort({_id : -1}).toArray((err, files) => {
@@ -71,7 +72,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             photos: files, 
             posts: posts,
             name : req.user.name,
-            userID: req.user.id
+            userID: req.user.id,
           });
         } 
 
@@ -94,7 +95,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             photos: files, 
             posts: posts,
             name : req.user.name,
-            userID: req.user.id
+            userID: req.user.id,
           });
         }
       });
